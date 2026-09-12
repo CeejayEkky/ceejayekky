@@ -6,26 +6,38 @@ const testimonials = [
     {
         name: "Angela Chioma",
         role: "ACNFashionHouse Founder",
-        image: "/images/meee.png",
+        image: "/images/y6.png",
         feedback: "Working with Ceejay was a perfect experience that elevated my coding skills. He delivers a clean, scalable and presentable work with effective user interaction."
-    },
-    {
-        name: "Helen Chidiebere",
-        role: "Admin Starter",
-        image: "/images/meee.png",
-        feedback: "His ability to translate ideas into a unique sight to see is so impressive. He has a smooth connection and relativeness to work."
     },
     {
         name: "Afolayan Marvelous",
         role: "MarveTech Founder",
-        image: "/images/meee.png",
+        image: "/images/y4.png",
         feedback: "Ceejay has a strong grasp to modern web technologies. His projects are made effectively stunning and outlines all core ideas made to a brilliant work."
+    },
+    {
+        name: "Helen Chidiebere",
+        role: "Admin Starter",
+        image: "/images/y1.png",
+        feedback: "His ability to translate ideas into a unique sight to see is so impressive. He has a smooth connection and relativeness to work."
     },
     {
         name: "Phylip Genty",
         role: "GentyPlatz Founder",
-        image: "/images/meee.png",
+        image: "/images/y2.jpg",
         feedback: "Very professional and easy to work with. He understands clearly the requirements needed for a particular project being given to him. He smartly levels it all."
+    },
+    {
+        name: "Akindele Enoch",
+        role: "PurePlay Manager",
+        image: "/images/y5.svg",
+        feedback: "Ceejay seamlessly bridges the gap between complex logic and user experience, ensuring every line of code serves a stunning visual purpose."
+    },
+    {
+        name: "Joshua Beloved",
+        role: "JoshEnterprise Founder",
+        image: "/images/y3.jpg",
+        feedback: "Ceejay does not just build websites; he engineers digital solutions that capture attention and communicate core concepts with absolute clarity."
     }
 ]
 
