@@ -15,6 +15,11 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "JayProTech",
   description: "Portfolio of Ceejay . JayProTech",
+  icons: {
+    icon: '/pico.png', // Placed in the public/ folder
+    shortcut: '/pico.png',
+    apple: '/pico.png',
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
