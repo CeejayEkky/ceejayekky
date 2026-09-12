@@ -29,43 +29,43 @@ const contactInfo = [
 export default function ContactSection() {
   const [loading, setLoading] = useState(false)
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    setLoading(true);
-    
-    const formData = new FormData(event.currentTarget);
-    
-    // 1. Grab your environment variable key
-    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "";
-    formData.append("access_key", accessKey);
+  event.preventDefault();
+  setLoading(true);
 
-    // 2. Convert FormData into a clean JavaScript Object and then JSON string
-    const object = Object.fromEntries(formData);
-    const json = JSON.stringify(object);
+  const form = event.currentTarget;
+  const formData = new FormData(form);
 
-    try {
-      // 3. Post the JSON directly
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json"
-        },
-        body: json
-      });
-  
-      const data = await response.json();
-      if (data.success) {
-        toast.success("Form submitted successfully");
-        event.currentTarget.reset();
-      } else {
-        // If Web3Forms returns an explicit error, show it here
-        toast.error(data.message || "Error submitting form");
-      }
-    } catch (error) {
-      toast.error("Network error. Please try again.");
-    }
+  const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
 
+  if (!accessKey) {
+    toast.error("Web3Forms access key is missing.");
     setLoading(false);
+    return;
+  }
+
+  formData.append("access_key", accessKey);
+  console.log("Access key exists:", !!process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY);
+  
+  try {
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData,
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      toast.success("Message sent successfully!");
+      form.reset();
+    } else {
+      toast.error(data.message || "Error submitting form");
+    }
+  } catch (error) {
+    console.error(error);
+    toast.error("Network error. Please try again.");
+  } finally {
+    setLoading(false);
+  }
 };
 
 
