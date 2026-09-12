@@ -35,7 +35,7 @@ export default function ContactSection() {
   const form = event.currentTarget;
   const formData = new FormData(form);
 
-  const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
+  const accessKey = "fd69d2c2-8308-42c2-9952-1221262de7ef";
 
   if (!accessKey) {
     toast.error("Web3Forms access key is missing.");
