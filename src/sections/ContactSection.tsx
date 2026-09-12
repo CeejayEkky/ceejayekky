@@ -35,7 +35,7 @@ export default function ContactSection() {
   const form = event.currentTarget;
   const formData = new FormData(form);
 
-  const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
+  const accessKey = process.env.WEB3FORMS_ACCESS_KEY;
 
   if (!accessKey) {
     toast.error("Web3Forms access key is missing.");
@@ -44,7 +44,7 @@ export default function ContactSection() {
   }
 
   formData.append("access_key", accessKey);
-  console.log("Access key exists:", !!process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY);
+  console.log("Access key exists:", !!process.env.WEB3FORMS_ACCESS_KEY);
   
   try {
     const response = await fetch("https://api.web3forms.com/submit", {
