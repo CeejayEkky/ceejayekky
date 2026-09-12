@@ -30,7 +30,7 @@ const testimonials = [
     {
         name: "Akindele Enoch",
         role: "PurePlay Manager",
-        image: "/images/y5.svg",
+        image: "/images/y5.png",
         feedback: "Ceejay seamlessly bridges the gap between complex logic and user experience, ensuring every line of code serves a stunning visual purpose."
     },
     {
