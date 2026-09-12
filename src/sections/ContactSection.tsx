@@ -28,13 +28,18 @@ const contactInfo = [
 
 export default function ContactSection() {
   const [loading, setLoading] = useState(false)
-  const onSubmit = async (event:React.SubmitEvent) => {
-      event.preventDefault();
-      setLoading(true)
-      
-      const formData = new FormData(event.target);
-      formData.append("access_key", "fd69d2c2-8308-42c2-9952-1221262de7ef");
-  
+  // Change event type to React.FormEvent<HTMLFormElement> to fix type warnings
+const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setLoading(true);
+    
+    const formData = new FormData(event.currentTarget); // use currentTarget
+    
+    // Add fallback string to satisfy TypeScript
+    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "";
+    formData.append("access_key", accessKey);
+
+    try {
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         body: formData
@@ -42,14 +47,18 @@ export default function ContactSection() {
   
       const data = await response.json();
       if (data.success) {
-        toast.success("Form submitted successfully")
-        event.target.reset();
+        toast.success("Form submitted successfully");
+        event.currentTarget.reset();
       } else {
-        toast.error("Error submitting form")
+        toast.error(data.message || "Error submitting form");
       }
+    } catch (error) {
+      toast.error("Network error. Please try again.");
+    }
 
-      setLoading(false)
-    };
+    setLoading(false);
+};
+
   return (
     <section id="contact" className="py-24 relative overflow-hidden">
       <div className="absolute top-1/3 right-1/4 -translate-x-1/2 w-95 h-90 rounded-full blur-3xl bg-[#20b2a6]/10" />

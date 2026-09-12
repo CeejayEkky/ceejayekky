@@ -26,6 +26,9 @@ importers:
       cn:
         specifier: ^0.2.5
         version: 0.2.5
+      dotenv:
+        specifier: ^17.4.2
+        version: 17.4.2
       face-api.js:
         specifier: ^0.22.2
         version: 0.22.2
